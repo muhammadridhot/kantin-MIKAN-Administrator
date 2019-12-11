@@ -5,7 +5,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var admin = require('firebase-admin');
 
-var serviceAccount =require('./kantin-online-mikroskil-9ee2c-firebase-adminsdk-p5wiu-d0b9e7b43a.json');
+var serviceAccount =require('');
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -18,7 +18,7 @@ app.use(express.static('public'));
 // inisialisasi firebase admin
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: 'https://kantin-online-mikroskil-9ee2c.firebaseio.com/'
+    databaseURL: ''
 });
 // Import Admin SDK
 var admin = require("firebase-admin");
