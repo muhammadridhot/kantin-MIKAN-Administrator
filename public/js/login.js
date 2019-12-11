@@ -2,7 +2,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
 	  // User is signed in.
 	  var user = firebase.auth().currentUser;
-	  if (user.uid == "Ai6uvYa68nMKVycL808rCCbhZ893") {
+	  if (user.uid == "") {
 		window.location="/beranda";
 	  }else{
 		  firebase.auth().signOut();
