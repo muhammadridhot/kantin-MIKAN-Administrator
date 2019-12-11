@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="css/simple-sidebar.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+	<script src="/js/firebase.js"></script>
+	<script src="/js/penyewa_stan.js"></script>
+	<!-- font awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<title>Home</title>
+</head>
+<body>
+	
+	<div class="d-flex" id="wrapper">
+
+		<!-- Sidebar -->
+		<div class="border-right" id="sidebar-wrapper">
+		  <div class="sidebar-heading">MIKAN</div>
+		  <div class="list-group list-group-flush">
+				<div id="menu-sidebar">
+						<a href="/beranda" class="list-group-item list-group-item-action" id="beranda"><i class="fas fa-home"></i>Beranda</a>
+						<a data-toggle="collapse" href="#submenu-informasi-pengguna" class="list-group-item list-group-item-action"><i class="fas fa-info-circle"></i>Informasi Pengguna</a>
+						<div class="collapse panel-collapse" id="submenu-informasi-pengguna"> 
+							<ul class="list-group">
+									<li><a href="/informasi-pengguna-mikroskil"><i class="fas fa-check-circle"></i>Mikroskil</a></li>
+									<li><a href="/informasi-pengguna-noncivitas"><i class="fas fa-check-circle"></i>Noncivitas</a></li>
+							</ul>
+						</div>
+						<a data-toggle="collapse" href="#submenu-dompet-digital" class="list-group-item list-group-item-action"><i class="fas fa-wallet"></i> Dompet Digital</a>
+						<div class="collapse panel-collapse" id="submenu-dompet-digital"> 
+							<ul class="list-group">
+									<li><a href="/topup"><i class="fas fa-check-circle"></i>Top Up</a></li>
+									<li><a href="/penarikan-saldo"><i class="fas fa-check-circle"></i>Penarikan saldo</a></li>
+							</ul>
+						</div>
+						<a data-toggle="collapse" href="#submenu-penyewa-stan" class="list-group-item list-group-item-action"><i class="fas fa-utensils"></i>Penyewa Stan</a>
+						<div class="collapse panel-collapse" id="submenu-penyewa-stan"> 
+								<ul class="list-group">
+										<li><a href="/penyewa-stan"><i class="fas fa-check-circle"></i>Penyewa Stan</a></li>
+										<li><a href="/konfirmasi-penyewa-stan"><i class="fas fa-check-circle"></i>Konfirmasi</a></li>
+								</ul>
+							</div>
+				</div>
+		  </div>
+		</div> 
+		<!-- /#sidebar-wrapper -->
+	
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+	
+		  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+				<button class="btn" id="menu-toggle"><i class="fas fa-bars"></i></button>
+	
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+	
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			  <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+				<li class="nav-item dropdown">
+				  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Profile
+				  </a>
+				  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#">Setting</a>
+					<a class="dropdown-item" href="#">Dark Mode</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Sign out</a>
+				  </div>
+				</li>
+			  </ul>
+			</div>
+		  </nav>
+	
+		<div class="container-fluid">
+			<div style="margin-top: 30px">
+				<i class="fas fa-circle" style="font-size: 16px;color: #1de9b6;margin-right: 30px"><span style="padding-left: 20px;color:black">Penyewaan Aktif</span></i>
+				<i class="fas fa-circle" style="font-size: 16px;color: #f44236;"><span style="padding-left: 20px;color:black">Penyewaan Jatuh Tempo</span></i>
+			</div>
+			<!-- tabel -->
+			<div id="tabel-daftar-pengguna" class="table-responsive">
+				<input id="searchEmail" onkeyup="searchPenyewa()" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<table class="table table-hover" id="tabel_penyewa">
+					<thead>
+						<tr>
+							<th scope="col">No Stan</th>
+							<th scope="col">Email</th>
+							<th scope="col">Status</th>
+							<th scope="col">Tgl Mulai Sewa</th>
+							<th scope="col">Tgl Jatuh Tempo Sewa</th>
+							<!-- <th scope="col">Masa Sewa</th> -->
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Modal NonAktifkan -->
+						<div class="modal fade" id="konfirmasiPenyewaan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <h5 class="modal-title" id="exampleModalLabel" style="color: green">Nonaktifkan</h5>
+								</div>
+								<div class="modal-body">
+								  Nonaktifkan Penyewa ?
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+								  <button type="button" class="btn btn-danger" onclick="nonAktifkanPenyewa()" data-dismiss="modal">Ya</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</div>
+		<!-- /#page-content-wrapper -->
+	
+	  </div>
+	  <!-- /#wrapper -->
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="/js/menu-toggle.js"></script>
+	<script src="/js/search.js"></script>
+
+</body>
+</html>

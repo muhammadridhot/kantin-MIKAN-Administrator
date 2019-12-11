@@ -1,0 +1,179 @@
+/* @import url("http://fonts.googleapis.com/css?family=Roboto"); */
+
+body{
+	font-family: "Open Sans",sans-serif;
+	background-color: #f8f9fa;
+}
+/* table{
+	max-width: 600px;
+} */
+thead, tbody{
+	text-align : center;
+}
+.modal-dialog .modal-content{
+	padding: 0px;
+	height: 100%;
+	padding: 20px;
+}
+.modal-header button{
+	background-color: white;
+}
+.modal-dialog .modal-content a{
+	margin-bottom: 20px;
+}
+/*Start Style Login*/
+.main-section{
+	/* margin: 0 auto; */
+	/* display: inline-block; */
+	padding: 0;
+}
+.modal-content{
+	background-color: white;
+	/* padding: 0 30px; */
+	border-radius: 3px; 
+	box-shadow: 0 5px 20px -1px rgba(0,0,0,0.2);
+	border: 0;
+	/* margin:0 auto; */
+}
+.user-img img{
+	height: 120px;
+	width: 120px;
+}
+.user-img{
+	margin-top: -60px;
+	margin-bottom: 30px;
+}
+
+#frmLogin .form-group{
+	margin-bottom: 25px;
+}
+#frmLogin .form-group input{
+	background: transparent;
+	height: 42px;
+	border: 0;
+	padding: 0;
+	border-bottom: 1px solid rgb(211, 211, 211);
+	border-radius: 0;
+}
+#frmLogin .form-group input:focus{
+	border-bottom: 2px solid #039be5;
+	/* -webkit-box-shadow:none; */
+
+}
+
+#buttonlogin{
+	background-color: #039be5;
+	font-size: 18px;
+	border-radius: 5px;
+	border: 1px solid #daf1ff;
+	width: 100%;
+}
+#buttonlogin:hover{
+	background-color: #daf1ff;
+	border: 1px solid #03a9f4;
+	color: #03a9f4;
+}
+
+/*Stop Style Login*/
+
+/* Start Style Sidebar */
+.sidebar-heading{
+	border-bottom: 1px solid black;
+	color: black;
+	/* text-align: center; */
+}
+#sidebar-wrapper{
+	background-color: white;
+}
+/* #menu-sidebar{
+	/* margin : 0px 10px; */
+/* }  */
+#menu-sidebar a{
+	margin : 5px 0px;
+	padding : 10px;
+	border: 0px;
+}
+#menu-sidebar a:hover{
+	color: black;
+}
+#submenu-informasi-pengguna ul li {
+	margin-left: 15px;
+	margin-bottom: 5px;
+	list-style-type: none;
+}
+#submenu-dompet-digital ul li {
+	margin-left: 15px;
+	margin-bottom: 5px;
+	list-style-type: none;
+}
+#submenu-penyewa-stan ul li{
+	margin-left: 15px;
+	margin-bottom: 5px;
+	list-style-type: none;
+}
+/* #beranda{
+	background-color: #039be5; 
+	color: #039be5;
+} */
+
+.my-custom-scrollbar {
+	position: relative;
+	height: 400px;
+	overflow: auto;
+	}
+	.table-wrapper-scroll-y {
+	display: block;
+	}
+#menu-sidebar a i{
+	margin-right: 10px;
+}
+/* Stop Style Sidebar */
+
+/* Start Style beranda */
+#tabel-transaksi,#tabel-daftar-pengguna,#tabel-topup,#tabel-penarikan-saldo, #tabel-stan{
+	/* margin: 50px; */
+	margin-top: 10px;
+	background-color: white;
+	padding: 20px;
+	border-radius: 2px;
+}
+#searchEmail{
+	margin-bottom: 15px;
+} 
+#tabel-transaksi table th,#tabel-daftar-pengguna table th,#tabel-topup table th, #tabel-penarikan-saldo th, #tabel_konfirmasi_penyewa th, #tabel_stan th{
+	color: #039be5;
+}
+.card{
+	margin: 20px 0px 20px 20px;
+	border-radius: 3px;
+	box-shadow: 0 0px 12px 0 rgb(238, 242, 245), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+	padding:0px;
+	border: 0px;
+}
+.card h4{
+	padding: 5px 10px;
+	color: white;
+}
+.card .card-title{
+	/* box-shadow: 0 0px 12px 0 rgb(238, 242, 245), 0 2px 5px 0 rgba(0, 0, 0, 0.19); */
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+}
+.card h2 i{
+	padding-left: 180px;
+	color: #f1f1f1;
+}
+#keterangan-jumlah-pengguna #pemesan .card-title{
+	background-color: #039be5;
+}
+#keterangan-jumlah-pengguna #pemilik-stan .card-title{
+	background-color: #4caf50;
+}
+#menu-toggle{
+	padding: 3px 10px;;
+}
+#menu-toggle:hover{
+	border: 1px solid #039be5;
+	color: #039be5;
+}
+/* Stop Style beranda */
