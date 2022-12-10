@@ -6,7 +6,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "firebase-admin": "^7.3.0",
     "init": "^0.1.2",
     "nodemon": "^1.19.0"
